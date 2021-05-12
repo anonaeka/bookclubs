@@ -23,8 +23,7 @@ class BookPolicy
   end
 
   def update?
-    [:admin, :editor].any? { |role| user.has_role? role }
-    # user.has_role?(:admin) || user.has_role?(:editor)
+    user.has_any_role?(:admin, :editor)
   end
 
   def edit?
